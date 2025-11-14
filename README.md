@@ -36,7 +36,7 @@
 │   │  
 │   └──  density DBSCAN  
 │       ├── K-Distance Plot   
-│       └── Visualization 
+│       └── Visualization  
 │  
 └── 3.  Overall model evaluation and comparison
 
