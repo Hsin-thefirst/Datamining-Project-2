@@ -25,18 +25,21 @@
 │   └── Pair Plots  
 │  
 └── 2.  Clustering Analysis  
-    │  
-    ├──  K-Means Clustering  
-    │   ├── Elbow Method   
-    │   └── Visualization   
-    │  
-    ├──  Hierarchical Clustering  
-    │   ├── Dendrogram   
-    │   └── Visualization   
-    │  
-    └──  density DBSCAN  
-        ├── K-Distance Plot   
-        └── Visualization   
+│   │  
+│  ├──  K-Means Clustering  
+│   │   ├── Elbow Method   
+│   │   └── Visualization   
+│   │  
+│   ├──  Hierarchical Clustering  
+│   │   ├── Dendrogram   
+│   │   └── Visualization   
+│   │  
+│   └──  density DBSCAN  
+│       ├── K-Distance Plot   
+│       └── Visualization 
+│  
+└── 3.  Overall model evaluation and comparison
+
 ##  Results & Visualizations
 
 ### 1. Exploratory Data Analysis (EDA)
@@ -49,6 +52,24 @@ We implemented three distinct algorithms to understand the customer groups from 
 
 | K-Means (K=5) | Hierarchical (K=5) | DBSCAN |  
 | K-Means found 5 clear, spherical clusters. | Hierarchical clustering found 5 very similar clusters to K-Means. | DBSCAN successfully identified core groups and flagged several points as "noise" (in black). |
+
+### 3. Model Evaluation & Comparison
+
+#### Internal Metrics Comparison
+* **Conclusion:** All models (DBSCAN, K-Means, Hierarchical, GMM) performed excellently on the Silhouette Score (~0.55), indicating a clear cluster structure. DBSCAN performed best on the Davies-Bouldin Index (lower is better).
+
+| Model | Silhouette (Higher) | Calinski-Harabasz (Higher) | Davies-Bouldin (Lower) |
+| :--- | :---: | :---: | :---: |
+| **K-Means (K=5)** | 0.555 | 248.65 | 0.572 |
+| **Hierarchical (K=5)**| 0.554 | 244.41 | 0.578 |
+| **DBSCAN (Optimal)** | **0.558** | 245.36 | **0.511** |
+| **GMM (K=5)** | 0.554 | 244.94 | 0.576 |
+
+#### PCA 2D Visualization Comparison
+To compare all models on a 2D plane, we used PCA for dimensionality reduction. This clearly shows how different algorithms partition the data.
+
+#### Similarity Matrix (Distance Matrix)
+The heatmap will display the (200x200) distance matrix, sorted by cluster label. The **5 dark squares** along the diagonal clearly indicate that intra-cluster distance is low (high similarity), while the brighter areas indicate high inter-cluster distance.
 
 **Plots Used for Parameter Selection:**
 
